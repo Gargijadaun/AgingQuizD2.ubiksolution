@@ -1527,6 +1527,36 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => ((v0.GetValue()) < (3) ? 1 : 0);
 		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpObject("player_id");
+		},
+		() => "Content-Type",
+		() => "application/json",
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			const v1 = p._GetNode(1).GetVar();
+			return () => ((and("Sending score: ", v0.GetValue()) + " email: ") + v1.GetValue());
+		},
+		() => "save",
+		() => "https://ubikback-production.up.railway.app/game3/doctor2/save_score",
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			const v1 = p._GetNode(1).GetVar();
+			const v2 = p._GetNode(2).GetVar();
+			return () => (and((and((((((("{" + "\"player_id\"") + ":") + v0.GetValue()) + ",") + "\"score\"") + ":"), v1.GetValue()) + ",\"discount\":"), v2.GetValue()) + "}");
+		},
+		() => "PATCH",
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			const v1 = p._GetNode(1).GetVar();
+			return () => and((and("Sending score: ", v0.GetValue()) + " discount: "), v1.GetValue());
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => ("Data" + f0());
+		},
+		() => "Discount",
 		() => 3.9,
 		() => "5% CONSULTATION",
 		() => 4.9,
@@ -1549,39 +1579,7 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const n0 = p._GetNode(0);
-			return () => n0.ExpObject("player_id");
-		},
-		() => "Content-Type",
-		() => "application/json",
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			const v1 = p._GetNode(1).GetVar();
-			return () => ((and("Sending score: ", v0.GetValue()) + " email: ") + v1.GetValue());
-		},
-		() => "save",
-		() => "https://ubikback-production.up.railway.app/game3/doctor2/save_score",
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			const v1 = p._GetNode(1).GetVar();
-			const v2 = p._GetNode(2).GetVar();
-			return () => (and((and((((((("{" + "\"player_id\"") + ":") + v0.GetValue()) + ",") + "\"score\"") + ":"), v1.GetValue()) + ",\"discount\":"), v2.GetValue()) + "}");
-		},
-		() => "PATCH",
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => ("Data" + f0());
-		},
-		p => {
-			const n0 = p._GetNode(0);
 			return () => n0.ExpInstVar();
-		},
-		() => "submit-associate",
-		() => "https://ubuntu.tail2124eb.ts.net/g3/submit-associate",
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			const v1 = p._GetNode(1).GetVar();
-			const v2 = p._GetNode(2).GetVar();
-			return () => (and((and((("{\"player_id\":\"" + v0.GetValue()) + "\",\"rating\":"), v1.GetValue()) + ",\"discount\":"), v2.GetValue()) + "}");
 		},
 		() => "Full",
 		() => "Empty",
